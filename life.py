@@ -1,6 +1,8 @@
 import numpy as np
 import time
 
+#https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
+
 
 class LifeGame:
 
