@@ -3,6 +3,13 @@ import time
 
 #https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 
+def instructions():
+    print("Try to reach the edge of the board with a live cell (#)")
+    print("A live cell will die unless it has 2 or 3 live neighbors")
+    print("A dead cell will become live if it has exactly 3 neighbors")
+
+    time.sleep(5)
+
 
 class LifeGame:
 
@@ -27,6 +34,7 @@ class LifeGame:
     negate = np.vectorize(lambda n : int(not bool(n))) #numpy didnt like n^1
 
     populate = np.vectorize(lambda n,threshold : int(n>=threshold))#from old seed implementation
+
 
     #initilize shape-dependent objects
     def __init__(self,heigth,width):
@@ -98,6 +106,7 @@ class LifeGame:
         
         return soln #assume false after maxsteps
         
+
     #get a random puzzle (might not be solvable)
     def genBoard(self,seedSize=4): 
         
@@ -134,6 +143,7 @@ class LifeGame:
 
         return(board,solns)
 
+
     def prettyPrint(self,board):
         out = " "*3
         for c in range(board.shape[1]):
@@ -147,6 +157,7 @@ class LifeGame:
                 else:
                     out += " - "
         print(out+"\n")
+
 
     def play(self):
         solved = False
@@ -200,18 +211,14 @@ class LifeGame:
             
 
             board[row][col] = int(not bool(board[row][col]))
+
+
+
             
-
-
-            
-
-
-
-        
-    
-
 
 def main():
+    instructions()
+
     size = 10
     while True:
         life=LifeGame(size,size)
